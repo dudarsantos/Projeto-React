@@ -67,7 +67,7 @@ const NovoUsuario = () => {
                     value={password}
                     required
                     onChange={(event) => setPassword(event.target.value)}
-                /> <br/>
+                /> 
                 <button type="submit">Enviar</button>
             </form>
 

@@ -9,10 +9,14 @@ export const Container = styled.div`
     border-radius: 10px;
     height: 80vh;
     width: 45vw;
-    margin-top: 60px;
-    margin-left: 400px;
     background: #70adb5;
     box-shadow: 5px 5px 5px #407088;
+  
+form{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
 
 h1 {
     color: #132743;
@@ -26,6 +30,7 @@ p {
 }
 
 button {
+    display:flex;
     align-items: center;
     justify-content: center;
     height: 45px;
@@ -35,11 +40,12 @@ button {
     color: #e8ffff;
     background: #132743;
     border-radius: 50px;
-    margin: 30px 0px 10px 20px;
     border: none;
     box-shadow: 5px 5px 5px #407088; 
     outline-style: none;
     transition: 0.3s;
+    margin:25px;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -57,7 +63,7 @@ input {
     border-radius: 50px;
     height:45px;
     width: 300px;
-    margin-left: 20px;
+    margin:10px;
 }
 
 
