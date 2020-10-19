@@ -1,61 +1,44 @@
 import React, { useState } from 'react';
 import api from '../../services/Api';
 import { Container } from './style';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const NovoProduto = () => {
+
+const Editar = (props) => {
     const [loading, setLoading] = useState(false);
-    const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
-    const [image,setImage] = useState('');
-    const [manual, setManual] = useState('');
-    // const history = useHistory();
+    const [nome, setNome] = useState(props.location.state.name);
+    const [descricao, setDescricao] = useState(props.location.state.description);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        post();
+        Edit(props.location.state.id);
     }
 
+    const history = useHistory();
+
     
-    const post = () => {
+    const Edit = (id) => {
         setLoading (true);
 
-        api.post("/Product", {name:nome, description:descricao, logo:image, }).then(function(res) {
+        api.put(`/Product/${id}`, {name:nome, description:descricao }).then(function(res) {
             setLoading(false);
             if(res.data.id){
-                console.log(res)
+                history.push("/Produtos")
             }
             else{
-                alert("Verifique se preencheu todos os campos corretamente")
+                alert("Não foi possível editar o produto")
             }
         })
     }
 
-    const loadImage = (event) => {
-        let file = event.target.files[0];
-        let reader = new FileReader();
-        reader.onloadend = function(e) {
-            setImage(reader.result);
-        }
-        reader.readAsDataURL(file);
-    }
-
-    const loadManual = (event) => {
-        let file = event.target.files[0];
-        let reader = new FileReader();
-        reader.onloadend = function(e) {
-            setManual(reader.result);
-        }
-        reader.readAsDataURL(file);
-    }
     
     return ( 
         loading?
        <div class="spinner"/> :
-       
+
         <Container>
             
-            <h1>Cadastre seu produto</h1>
+            <h1>Editar produto</h1>
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nome"></label>
@@ -81,7 +64,7 @@ const NovoProduto = () => {
                 />
 
                 <label htmlFor="image"></label>
-                <input 
+                {/* <input 
                 className={`custom-file-input input-logo ${image&&'selected'}`}
                 id="image"
                     type="file"
@@ -89,13 +72,10 @@ const NovoProduto = () => {
                     name="image"
                     placeholder="Imagem"
                     required
-                    onChange={(event) => {
-                        loadImage(event);
-                    }}
-                /> 
+                />  */}
 
                 <label htmlFor="manual"></label>
-                <input 
+                {/* <input 
                 className={`custom-file-input input-manual ${manual&&'selected'}`}
                 id="manual"
                     type="file"
@@ -103,17 +83,14 @@ const NovoProduto = () => {
                     name="manual"
                     placeholder="Manual"
                     required
-                    onChange={function(event) {
-                        loadManual(event);
-                    }}
-                /> 
+                />  */}
 
 
-                <button type="submit">Cadastrar</button>
+                <button type="submit">Salvar</button>
             </form> 
-            <Link to="/Menu">Voltar</Link>
+            <Link to="/Produtos">Voltar</Link>
         </Container>
     );
 };
 
-export default NovoProduto;
+export default Editar;

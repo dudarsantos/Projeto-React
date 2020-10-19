@@ -19,9 +19,9 @@ const Menu = () => {
             <h1>Selecione uma das opções abaixo:</h1>
             <img src={rocket} alt="foguete"/>
 
-            <button onClick={minhaFuncao} >Cadastrar Produto</button>
+            <button onClick={()=>{minhaFuncao('NovoProduto')}} >Cadastrar Produto</button>
             <br/>
-            <button onClick={()=>{minhaFuncao('EditarProduto')}} >Lista de Produtos</button>
+            <button onClick={()=>{minhaFuncao('Produtos')}} >Lista de Produtos</button>
             
         </Container>
     )

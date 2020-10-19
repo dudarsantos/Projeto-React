@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import ovni from '../../assets/ovni.svg'
 
 const NovoUsuario = () => {
+    const [loading, setLoading] = useState(false);
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -16,7 +17,11 @@ const NovoUsuario = () => {
     }
 
     function post() {
+        setLoading (true);
+
         api.post("/Users", {name:nome, email, password}).then(res => {
+            setLoading(false);
+
             if(res.data.id){
                 history.push("/Login")
             }
@@ -28,7 +33,10 @@ const NovoUsuario = () => {
         })
     }
     
-    return ( 
+    return (  
+        loading?
+       <div class="spinner"/> :
+
         <Container>
             
             <h1>Registre-se</h1>

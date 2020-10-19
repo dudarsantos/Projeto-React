@@ -21,7 +21,7 @@ const Login = () => {
 
         api.post("/Sessions", {email, password}).then(res => {
             if(res.data.token){
-                history.push("/NovoProduto")
+                history.push("/Menu")
             }
             else{
                 alert("Não foi possível cadastrar.")
@@ -29,7 +29,7 @@ const Login = () => {
             setLoading(false)
         },err => {
             setLoading(false);
-             alert("E-mail já existe")
+             alert("confira se seu dados estão corretos")
         })
     }
     
@@ -37,6 +37,7 @@ const Login = () => {
          loading?
         <div class="spinner"/> :
         <Container>
+        
             <h1>Login</h1>
             <img src={user} alt="user" color='red'/>
 

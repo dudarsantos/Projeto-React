@@ -21,7 +21,7 @@ form{
 h1 {
     color: #132743;
     font-size: 3rem;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 
@@ -68,35 +68,6 @@ input::placeholder {
     background-color: transparent;
 } 
 
-.custom-file-input {
-    /* width: 350px; */
-    padding: 0;
-  }
-  .custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .custom-file-input::before {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height:100%;
-    color: #132743;
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  .custom-file-input:hover::before {
-    color: white;
-    background-color: #132743;
-  }
-
-  .input-manual::before {
-    content: 'Carregar manual';
-   }
-   .input-logo::before {
-    content: 'Carregar logo';
-   }
 
    .selected::before{
     content: 'Arquivo selecionado';
@@ -109,6 +80,7 @@ a {
     align-items: center;
     text-decoration: none;
     color: #e8ffff;
+    margin-top: 20px;
     font-weight: bold;
 }
 
